@@ -1,7 +1,6 @@
 # Tarefas — MiriConfeitaria
 
 ## Em andamento
-- [ ] Mover o site para a organização `miridoces`: criar a organização, transferir o repositório, renomear para `miridoces.github.io` e ativar Pages (Source = GitHub Actions) — pronto quando: https://miridoces.github.io/ abre com logo, fontes e cardápio
 - [ ] Preencher conteúdo real do site: WhatsApp, cidade, produtos, preços e fotos — arquivos: `Site/src/conteudo/`, `Site/public/fotos/` — pronto quando: nenhum produto de EXEMPLO e `npm test` passando
 - [ ] Validar o guia da marca com a cliente (https://claude.ai/artifact/Cbipcc9ok8zimuxf6cQLgp) — arquivos: `ArteVisual/identidade/marca.md` — pronto quando: tom de voz e fotografia aprovados (hoje são proposta) e preenchidos diferencial, WhatsApp e hashtags
 - [ ] Confirmar com a cliente o nome da marca (perfil do Instagram usa "Miriã Glueck Festa e Decoração") e o WhatsApp de encomendas
@@ -36,6 +35,8 @@
 - [ ] Apontar o domínio da cliente (DNS + `Site/public/CNAME`, `base` do Vite = `/`, HTTPS ativado) — pronto quando: site abre no domínio com HTTPS
 
 ## Concluído
+- [x] Site: seção "Mais vendidos" na página inicial (campo `maisVendido`) e cardápio em página própria `/cardapio/` com filtros Todos, Bolos, Biscoitos, Sobremesas; granulado do topo corrigido no celular
+- [x] Site no ar em https://miridoces.github.io/ (organização `miridoces`, repositório `miridoces.github.io`, deploy automático pela `main`)
 - [x] Repositório https://github.com/TiagoGlueck/miridoces criado (push via SSH) e workflow de deploy no GitHub Pages; build, testes e lint passam no Actions
 - [x] Site: projeto Vite + React + MDX, página única (início, cardápio com filtro, sobre, como encomendar, rodapé) usando `tokens.css` e logos; testes, lint e build passando (wireframe pulado: a identidade já estava pronta)
 - [x] Formato do conteúdo em MDX definido (`loja.mdx`, `encomendas.mdx`, `produtos/*.mdx` + `LEIA-ME.md`)

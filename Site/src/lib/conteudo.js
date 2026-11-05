@@ -21,6 +21,7 @@ export function validarProduto(fm) {
   if (fm.preco != null && (typeof fm.preco !== 'number' || fm.preco < 0)) {
     erros.push('campo "preco" deve ser só o número, ex.: 120 ou 89.9')
   }
+  if ('destaque' in fm) erros.push('o campo "destaque" mudou de nome: use "maisVendido: true"')
   if (fm.foto != null && !/^[\w.-]+\.(jpe?g|png|webp)$/i.test(fm.foto)) {
     erros.push('campo "foto" deve ser o nome do arquivo em public/fotos, ex.: bolo.jpg')
   }
@@ -48,7 +49,7 @@ export const arquivosDeProduto = Object.entries(modulos).map(([caminho, mod]) =>
   erros: validarProduto(mod.frontmatter),
 }))
 
-/** Produtos válidos e disponíveis, com destaques primeiro e depois pela ordem. */
+/** Produtos válidos e disponíveis: mais vendidos primeiro, depois pela ordem e pelo nome. */
 export const produtos = arquivosDeProduto
   .filter((p) => {
     if (p.erros.length) {
@@ -59,10 +60,14 @@ export const produtos = arquivosDeProduto
   })
   .sort(
     (a, b) =>
-      Number(Boolean(b.dados.destaque)) - Number(Boolean(a.dados.destaque)) ||
+      Number(Boolean(b.dados.maisVendido)) - Number(Boolean(a.dados.maisVendido)) ||
       (a.dados.ordem ?? 999) - (b.dados.ordem ?? 999) ||
       a.dados.nome.localeCompare(b.dados.nome, 'pt-BR'),
   )
+
+/** Quantos mais vendidos aparecem na página inicial. */
+export const LIMITE_MAIS_VENDIDOS = 3
+export const maisVendidos = produtos.filter((p) => p.dados.maisVendido).slice(0, LIMITE_MAIS_VENDIDOS)
 
 export const dadosLoja = loja.frontmatter ?? {}
 export const Sobre = loja.default

@@ -1,6 +1,7 @@
 import simbolo from '../../../ArteVisual/identidade/logo/miridoces-simbolo.svg'
 import logoBranco from '../../../ArteVisual/identidade/logo/miridoces-branco.svg'
 import { linkEncomenda, linkInstagram } from '../lib/contato.js'
+import { PAGINAS } from '../lib/caminhos.js'
 
 export function Sobre({ Texto }) {
   return (
@@ -40,6 +41,7 @@ export function Rodape({ loja }) {
       <div className="rodape__in">
         <img src={logoBranco} alt={loja.nome} width="150" height="28" />
         <ul>
+          <li><a href={PAGINAS.cardapio}>Cardápio</a></li>
           {insta && <li><a href={insta} target="_blank" rel="noopener">Instagram @{loja.instagram}</a></li>}
           {loja.whatsapp && <li><a href={`https://wa.me/${loja.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a></li>}
           {loja.cidade && <li>{loja.cidade}</li>}

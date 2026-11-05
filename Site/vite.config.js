@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import mdx from '@mdx-js/rollup'
@@ -13,5 +14,14 @@ export default defineConfig({
   ],
   // permite importar tokens.css e logos de ../ArteVisual/identidade (fonte única da marca)
   server: { fs: { allow: ['..'] } },
+  // site com duas páginas HTML: início (/) e cardápio (/cardapio/)
+  build: {
+    rolldownOptions: {
+      input: {
+        inicio: fileURLToPath(new URL('./index.html', import.meta.url)),
+        cardapio: fileURLToPath(new URL('./cardapio/index.html', import.meta.url)),
+      },
+    },
+  },
   test: { environment: 'node' },
 })

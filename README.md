@@ -41,6 +41,7 @@ Tudo que muda com frequência fica em `Site/src/conteudo/`, sem mexer em código
 - `loja.mdx`: nome, título da página inicial, WhatsApp, Instagram, cidade e o texto "Sobre".
 - `encomendas.mdx`: passos de "Como encomendar".
 - `produtos/*.mdx`: um arquivo por produto (veja `produtos/LEIA-ME.md`). Fotos em `Site/public/fotos/`.
+  Produtos com `maisVendido: true` aparecem em "Mais vendidos" na página inicial (até 3); todos aparecem na página `/cardapio/`.
 
 Depois de editar, rode `npm test` para conferir.
 

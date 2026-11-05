@@ -1,60 +1,49 @@
-import { useState } from 'react'
-import { CATEGORIAS, formatarPreco } from '../lib/conteudo.js'
-import { linkEncomenda } from '../lib/contato.js'
+import { useEffect, useState } from 'react'
+import ProdutoCard from './ProdutoCard.jsx'
+import { CATEGORIAS } from '../lib/conteudo.js'
 
-function ProdutoCard({ produto, loja }) {
-  const { nome, categoria, preco, unidade, foto } = produto.dados
-  const { Descricao } = produto
-  const contato = linkEncomenda(loja, nome)
-  const valor = formatarPreco(preco)
-  return (
-    <article className="produto">
-      {foto ? (
-        <img className="produto__foto" src={`${import.meta.env.BASE_URL}fotos/${foto}`} alt={nome} loading="lazy" />
-      ) : (
-        <div className="produto__foto produto__foto--vazia" role="img" aria-label={`Foto de ${nome} em breve`}>
-          <span>foto em breve</span>
-        </div>
-      )}
-      <div className="produto__corpo">
-        <span className="etiqueta">{CATEGORIAS[categoria]}</span>
-        <h3>{nome}</h3>
-        <div className="produto__desc"><Descricao /></div>
-        <p className="produto__preco">
-          {valor ? <><strong>{valor}</strong>{unidade && <span> {unidade}</span>}</> : 'Preço sob consulta'}
-        </p>
-        {contato.canal && (
-          <a className="botao botao--primario produto__cta" href={contato.href} target="_blank" rel="noopener">
-            Encomendar pelo {contato.canal}
-          </a>
-        )}
-      </div>
-    </article>
-  )
+// O filtro fica no endereço (ex.: /cardapio/#bolos) para dar para compartilhar o link.
+function filtroDoEndereco() {
+  const h = decodeURIComponent(window.location.hash.slice(1))
+  return h in CATEGORIAS ? h : 'todos'
 }
 
 export default function Cardapio({ produtos, loja }) {
-  const [filtro, setFiltro] = useState('todos')
+  const [filtro, setFiltro] = useState(filtroDoEndereco)
+
+  useEffect(() => {
+    const aoMudar = () => setFiltro(filtroDoEndereco())
+    window.addEventListener('hashchange', aoMudar)
+    return () => window.removeEventListener('hashchange', aoMudar)
+  }, [])
+
+  function escolher(c) {
+    setFiltro(c)
+    const destino = c === 'todos' ? window.location.pathname : `#${c}`
+    window.history.replaceState(null, '', destino)
+  }
+
   const presentes = Object.keys(CATEGORIAS).filter((c) => produtos.some((p) => p.dados.categoria === c))
   const visiveis = filtro === 'todos' ? produtos : produtos.filter((p) => p.dados.categoria === filtro)
 
   return (
-    <section id="cardapio" className="secao" aria-labelledby="cardapio-titulo">
+    <section className="secao pagina-cardapio" aria-labelledby="cardapio-titulo">
       <div className="secao__in">
-        <div className="secao__topo">
-          <h2 id="cardapio-titulo">Cardápio</h2>
-          {presentes.length > 1 && (
-            <div className="filtros" role="group" aria-label="Filtrar por categoria">
-              {['todos', ...presentes].map((c) => (
-                <button key={c} type="button" aria-pressed={filtro === c} onClick={() => setFiltro(c)}>
-                  {c === 'todos' ? 'Todos' : CATEGORIAS[c]}
-                </button>
-              ))}
-            </div>
-          )}
+        <div className="pagina-cardapio__topo">
+          <h1 id="cardapio-titulo">Cardápio</h1>
+          <p>Tudo feito à mão, sob encomenda. Escolha o seu e chame a gente para combinar data e detalhes.</p>
         </div>
+        {presentes.length > 1 && (
+          <div className="filtros" role="group" aria-label="Filtrar por categoria">
+            {['todos', ...presentes].map((c) => (
+              <button key={c} type="button" aria-pressed={filtro === c} onClick={() => escolher(c)}>
+                {c === 'todos' ? 'Todos' : CATEGORIAS[c]}
+              </button>
+            ))}
+          </div>
+        )}
         {visiveis.length ? (
-          <div className="produtos">
+          <div className="produtos" aria-live="polite">
             {visiveis.map((p) => <ProdutoCard key={p.slug} produto={p} loja={loja} />)}
           </div>
         ) : (

@@ -1,6 +1,7 @@
 import { linkEncomenda } from '../lib/contato.js'
+import { PAGINAS } from '../lib/caminhos.js'
 
-export default function Inicio({ loja }) {
+export default function Abertura({ loja }) {
   const contato = linkEncomenda(loja)
   return (
     <section id="inicio" className="inicio" aria-labelledby="inicio-titulo">
@@ -13,7 +14,7 @@ export default function Inicio({ loja }) {
               Encomendar pelo {contato.canal}
             </a>
           )}
-          <a className="botao botao--claro" href="#cardapio">Ver cardápio</a>
+          <a className="botao botao--claro" href={PAGINAS.cardapio}>Ver cardápio</a>
         </div>
       </div>
     </section>

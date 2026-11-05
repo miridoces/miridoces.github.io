@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { arquivosDeProduto, dadosLoja, produtos, validarLoja, validarProduto } from './conteudo.js'
+import { LIMITE_MAIS_VENDIDOS, arquivosDeProduto, dadosLoja, maisVendidos, produtos, validarLoja, validarProduto } from './conteudo.js'
 import { linkEncomenda } from './contato.js'
 
 describe('conteúdo do site', () => {
@@ -20,10 +20,15 @@ describe('conteúdo do site', () => {
     expect(new Set(nomes).size).toBe(nomes.length)
   })
 
-  it('coloca os destaques primeiro', () => {
-    const iDestaque = produtos.findIndex((p) => p.dados.destaque)
-    const iComum = produtos.findIndex((p) => !p.dados.destaque)
-    if (iDestaque >= 0 && iComum >= 0) expect(iDestaque).toBeLessThan(iComum)
+  it('coloca os mais vendidos primeiro no cardápio', () => {
+    const iVendido = produtos.findIndex((p) => p.dados.maisVendido)
+    const iComum = produtos.findIndex((p) => !p.dados.maisVendido)
+    if (iVendido >= 0 && iComum >= 0) expect(iVendido).toBeLessThan(iComum)
+  })
+
+  it(`mostra no máximo ${LIMITE_MAIS_VENDIDOS} mais vendidos na página inicial, todos marcados`, () => {
+    expect(maisVendidos.length).toBeLessThanOrEqual(LIMITE_MAIS_VENDIDOS)
+    expect(maisVendidos.every((p) => p.dados.maisVendido)).toBe(true)
   })
 })
 
@@ -31,6 +36,10 @@ describe('validações', () => {
   it('recusa categoria e preço inválidos', () => {
     const erros = validarProduto({ nome: 'X', categoria: 'salgados', preco: 'R$ 10' })
     expect(erros).toHaveLength(2)
+  })
+
+  it('avisa quando o campo antigo "destaque" é usado', () => {
+    expect(validarProduto({ nome: 'X', categoria: 'bolos', destaque: true })[0]).toMatch(/maisVendido/)
   })
 
   it('aceita produto sem preço e sem foto', () => {
