@@ -1,0 +1,157 @@
+/* Estilos do site. Cores e fontes vêm de ArteVisual/identidade/tokens.css; não use HEX soltos aqui. */
+:root {
+  color-scheme: light;
+  --largura: 1120px;
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --linha: color-mix(in srgb, var(--cor-primaria) 14%, var(--cor-fundo));
+  --texto-suave: color-mix(in srgb, var(--cor-texto) 78%, var(--cor-fundo));
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--cor-fundo); color: var(--cor-texto);
+  font: 400 17px/1.6 var(--fonte-texto);
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; line-height: 1.05; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(32px, 5vw, 46px); color: var(--cor-primaria); }
+h3 { font-size: 24px; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--cor-destaque); outline-offset: 3px; border-radius: 4px; }
+
+.pular { position: absolute; left: -9999px; top: 8px; z-index: 20; background: var(--cor-texto); color: var(--cor-fundo); padding: 10px 16px; border-radius: var(--raio-pilula); }
+.pular:focus { left: 16px; }
+
+/* Botões: altura mínima de 48px para toque */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px;
+  padding: 12px 22px; border-radius: var(--raio-pilula);
+  font: 700 16px/1.2 var(--fonte-texto); text-decoration: none; text-align: center;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.botao:hover { transform: translateY(-1px); box-shadow: 0 6px 16px color-mix(in srgb, var(--cor-texto) 18%, transparent); }
+.botao--primario { background: var(--cor-primaria); color: var(--cor-sobre-primaria); }
+.botao--destaque { background: var(--cor-destaque); color: var(--cor-texto); }
+.botao--claro { background: var(--cor-fundo); color: var(--cor-texto); }
+@media (prefers-reduced-motion: reduce) { .botao { transition: none; } .botao:hover { transform: none; } }
+
+.etiqueta {
+  display: inline-block; align-self: flex-start; background: var(--cor-destaque); color: var(--cor-texto);
+  font: 700 12px/1 var(--fonte-texto); letter-spacing: .14em; text-transform: uppercase;
+  padding: 6px 10px; border-radius: var(--raio-pilula);
+}
+
+/* Cabeçalho */
+.cabecalho { position: sticky; top: 0; z-index: 10; background: var(--cor-fundo); border-bottom: 1px solid var(--linha); }
+.cabecalho__in {
+  max-width: var(--largura); margin: 0 auto; padding-block: 12px;
+  padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; align-items: center; gap: 24px;
+}
+.cabecalho__logo img { width: 150px; height: auto; }
+.cabecalho__nav { display: flex; gap: 24px; margin-left: auto; font-weight: 500; }
+.cabecalho__nav a { text-decoration: none; padding: 10px 0; }
+.cabecalho__nav a:hover { color: var(--cor-primaria); }
+.cabecalho__cta { min-height: 42px; padding: 8px 18px; font-size: 15px; }
+@media (max-width: 720px) {
+  .cabecalho__in { flex-wrap: wrap; gap: 4px 16px; }
+  .cabecalho__logo img { width: 128px; }
+  .cabecalho__cta { margin-left: auto; }
+  .cabecalho__nav { order: 3; width: 100%; margin-left: 0; gap: 20px; font-size: 15px; }
+  .cabecalho__nav a { padding: 6px 0; }
+}
+
+/* Início: granulado só na lateral direita, longe do texto */
+.inicio { position: relative; background: var(--cor-primaria); color: var(--cor-sobre-primaria); overflow: hidden; }
+.inicio::before {
+  content: ""; position: absolute; inset: 0;
+  background: var(--granulado-sobre-primaria); background-size: 130px;
+  -webkit-mask-image: linear-gradient(to left, #000 0 26%, transparent 40%);
+  mask-image: linear-gradient(to left, #000 0 26%, transparent 40%);
+}
+.inicio__in {
+  position: relative; max-width: var(--largura); margin: 0 auto; padding-block: clamp(56px, 9vw, 104px);
+  padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 20px;
+}
+.inicio h1 { font-size: clamp(40px, 7vw, 76px); max-width: 16ch; }
+.inicio__sub { font-size: clamp(18px, 2.2vw, 21px); max-width: 38ch; }
+.inicio__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+@media (max-width: 720px) {
+  .inicio::before { -webkit-mask-image: linear-gradient(to bottom, transparent 70%, #000 82%); mask-image: linear-gradient(to bottom, transparent 70%, #000 82%); }
+  .inicio__in { padding-bottom: 96px; }
+}
+
+/* Seções */
+.secao { padding-block: clamp(56px, 8vw, 96px); }
+.secao--branca { background: var(--branco); }
+.secao__in {
+  max-width: var(--largura); margin: 0 auto;
+  padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 32px;
+}
+.secao__topo { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
+.texto { display: grid; gap: 14px; max-width: 62ch; }
+.texto strong { color: var(--cor-primaria); }
+
+/* Cardápio */
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; }
+.filtros button {
+  min-height: 44px; padding: 8px 18px; border-radius: var(--raio-pilula); cursor: pointer;
+  font: 500 15px/1 var(--fonte-texto); color: var(--cor-texto);
+  background: var(--branco); border: 1px solid var(--linha);
+}
+.filtros button[aria-pressed="true"] { background: var(--cor-texto); color: var(--cor-fundo); border-color: var(--cor-texto); }
+.produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+.produto {
+  background: var(--branco); border-radius: var(--raio-cartao); overflow: hidden;
+  display: grid; grid-template-rows: auto 1fr; box-shadow: 0 1px 2px color-mix(in srgb, var(--cor-texto) 8%, transparent), 0 10px 30px color-mix(in srgb, var(--cor-texto) 7%, transparent);
+}
+.produto__foto { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.produto__foto--vazia {
+  display: grid; place-items: center; background: var(--cor-fundo) var(--granulado-sobre-fundo); background-size: 100px;
+}
+.produto__foto--vazia span {
+  background: var(--cor-fundo); color: var(--cor-primaria); padding: 6px 12px; border-radius: var(--raio-pilula);
+  font: 700 12px/1 var(--fonte-texto); letter-spacing: .14em; text-transform: uppercase;
+}
+.produto__corpo { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.produto h3 { color: var(--cor-texto); }
+.produto__desc { color: var(--texto-suave); font-size: 16px; }
+.produto__preco { margin-top: auto; padding-top: 6px; font-size: 15px; color: var(--texto-suave); }
+.produto__preco strong { font-size: 20px; color: var(--cor-primaria); }
+.produto__cta { margin-top: 4px; }
+.vazio { color: var(--texto-suave); }
+
+/* Sobre */
+.sobre { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(24px, 6vw, 72px); }
+.sobre__simbolo { width: clamp(120px, 20vw, 200px); height: auto; }
+@media (max-width: 640px) { .sobre { grid-template-columns: minmax(0, 1fr); } }
+
+/* Como encomendar: passos numerados (é uma sequência de verdade) */
+.encomendas { justify-items: start; }
+.encomendas__passos ol { list-style: none; counter-reset: passo; margin: 0; padding: 0; display: grid; gap: 18px; }
+/* o item tem texto solto (não dá para usar grid); o número fica posicionado à esquerda */
+.encomendas__passos li { counter-increment: passo; position: relative; padding-left: 64px; min-height: 48px; padding-top: 10px; }
+.encomendas__passos li::before {
+  content: counter(passo); position: absolute; left: 0; top: 0; width: 48px; height: 48px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--cor-primaria); color: var(--cor-sobre-primaria); font: 400 24px/1 var(--fonte-titulo);
+}
+.encomendas__passos p { color: var(--texto-suave); }
+
+/* Rodapé */
+.rodape { background: var(--cor-texto); color: var(--cor-fundo); }
+.rodape__in {
+  max-width: var(--largura); margin: 0 auto; padding-block: 40px;
+  padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;
+}
+.rodape__in img { width: 140px; height: auto; }
+.rodape ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.rodape a { text-underline-offset: 3px; }
+.rodape small { margin-left: auto; font-size: 14px; opacity: .85; }
+@media (max-width: 640px) { .rodape small { margin-left: 0; width: 100%; } }

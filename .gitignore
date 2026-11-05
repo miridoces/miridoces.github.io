@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+
+# Claude Code: configurações locais não vão para o repositório
+.claude/settings.local.json
