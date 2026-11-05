@@ -31,7 +31,9 @@ npm run lint
 npm run build     # gera Site/dist/
 ```
 
-Para publicar em uma subpasta (GitHub Pages), gere com `BASE_PATH=/<repo>/ npm run build`.
+Publicação: cada push na `main` publica o site em https://miridoces.github.io/ pelo GitHub Actions
+(`.github/workflows/deploy.yml`, que roda testes, lint e build antes). Para gerar localmente
+para uma subpasta, use `BASE_PATH=/<pasta>/ npm run build`.
 
 ### Atualizar o conteúdo
 Tudo que muda com frequência fica em `Site/src/conteudo/`, sem mexer em código:

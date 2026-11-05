@@ -32,9 +32,11 @@ Site (rodar dentro de `Site/`, Node 24):
 - Site: o conteúdo editável (produtos, preços, textos das páginas) fica em arquivos `.mdx`
   com frontmatter em `Site/src/conteudo/`; componentes React só cuidam do layout. Atualizar
   o cardápio não deve exigir mexer em código. Saída 100% estática (`dist/`), sem backend.
-- Hospedagem: GitHub Pages. Na fase de apresentação o site fica em `/<repo>/`, depois vai
-  para o domínio da cliente na raiz `/`. Por isso o `base` do Vite vem de variável de
-  ambiente, e caminhos de imagens e links nunca são fixos (`/foto.jpg` quebra no GitHub Pages).
+- Hospedagem: GitHub Pages, repositório `miridoces/miridoces.github.io` (organização própria),
+  publicado em https://miridoces.github.io/ pelo workflow `.github/workflows/deploy.yml` a cada
+  push na `main`. Depois vai para o domínio da cliente. O `base` do Vite vem da variável
+  `BASE_PATH` (o workflow calcula), então caminhos de imagens e links nunca são fixos: use
+  `import.meta.env.BASE_URL` ou imports, nunca `/foto.jpg`.
   Se houver rotas, use `HashRouter` ou um `404.html` de fallback, porque o GitHub Pages não
   tem rewrite de rotas.
 - Gerenciamento é **Google Planilhas**, não sistema web: a cliente precisa conseguir usar

@@ -1,7 +1,10 @@
 # Publica o site (pasta Site/) no GitHub Pages a cada push na main.
 # Requer: Settings > Pages > Source = "GitHub Actions".
-# BASE_PATH: por padrão "/<nome-do-repo>/". Ao usar o domínio da cliente, crie a variável
-# de repositório BASE_PATH = "/" (Settings > Secrets and variables > Actions > Variables).
+# BASE_PATH (caminho do site no endereço):
+#   - repositório "<nome>.github.io" (ex.: miridoces/miridoces.github.io) → "/" (raiz)
+#   - qualquer outro repositório → "/<nome-do-repo>/"
+#   - para forçar outro valor (ex.: domínio próprio), crie a variável de repositório BASE_PATH
+#     em Settings > Secrets and variables > Actions > Variables.
 name: Publicar site
 
 on:
@@ -36,7 +39,7 @@ jobs:
       - run: npm run lint
       - run: npm run build
         env:
-          BASE_PATH: ${{ vars.BASE_PATH || format('/{0}/', github.event.repository.name) }}
+          BASE_PATH: ${{ vars.BASE_PATH || (endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name)) }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

@@ -1,6 +1,7 @@
 # Tarefas — MiriConfeitaria
 
 ## Em andamento
+- [ ] Mover o site para a organização `miridoces`: criar a organização, transferir o repositório, renomear para `miridoces.github.io` e ativar Pages (Source = GitHub Actions) — pronto quando: https://miridoces.github.io/ abre com logo, fontes e cardápio
 - [ ] Preencher conteúdo real do site: WhatsApp, cidade, produtos, preços e fotos — arquivos: `Site/src/conteudo/`, `Site/public/fotos/` — pronto quando: nenhum produto de EXEMPLO e `npm test` passando
 - [ ] Validar o guia da marca com a cliente (https://claude.ai/artifact/Cbipcc9ok8zimuxf6cQLgp) — arquivos: `ArteVisual/identidade/marca.md` — pronto quando: tom de voz e fotografia aprovados (hoje são proposta) e preenchidos diferencial, WhatsApp e hashtags
 - [ ] Confirmar com a cliente o nome da marca (perfil do Instagram usa "Miriã Glueck Festa e Decoração") e o WhatsApp de encomendas
@@ -12,7 +13,7 @@
 **Decisões**
 - [x] Site: estático em React + MDX (conteúdo atualizado editando arquivos `.mdx`)
 - [x] Planilha: Google Planilhas (online, acessível pelo celular)
-- [x] Hospedagem: GitHub Pages para apresentar à cliente; depois de aprovado, domínio próprio da cliente
+- [x] Hospedagem: GitHub Pages na organização `miridoces` (https://miridoces.github.io/) para apresentar à cliente; depois de aprovado, domínio próprio da cliente
 - [ ] Planilha: criar no meu Google Drive e compartilhar com a cliente, ou direto no Drive dela? (decidir ao montar a planilha)
 
 **0. Base**
@@ -31,11 +32,11 @@
 
 **3. Site**
 - [ ] Criar skill `produto-site` e cadastrar o cardápio — arquivos: `.skills/produto-site/`, `Site/src/conteudo/produtos/` — pronto quando: cada produto tem foto, descrição, preço e botão de WhatsApp com mensagem pronta
-- [ ] Repositório git + GitHub e deploy no GitHub Pages via GitHub Actions (`base` do Vite = `/<repo>/`) — arquivos: `.github/workflows/deploy.yml`, `Site/vite.config.js` — pronto quando: link `https://<usuario>.github.io/<repo>/` abre com imagens, rotas e recarregamento de página funcionando
 - [ ] Revisar com `design:accessibility-review` e `design:ux-copy` e apresentar à cliente pelo link do GitHub Pages — pronto quando: cliente aprovar
 - [ ] Apontar o domínio da cliente (DNS + `Site/public/CNAME`, `base` do Vite = `/`, HTTPS ativado) — pronto quando: site abre no domínio com HTTPS
 
 ## Concluído
+- [x] Repositório https://github.com/TiagoGlueck/miridoces criado (push via SSH) e workflow de deploy no GitHub Pages; build, testes e lint passam no Actions
 - [x] Site: projeto Vite + React + MDX, página única (início, cardápio com filtro, sobre, como encomendar, rodapé) usando `tokens.css` e logos; testes, lint e build passando (wireframe pulado: a identidade já estava pronta)
 - [x] Formato do conteúdo em MDX definido (`loja.mdx`, `encomendas.mdx`, `produtos/*.mdx` + `LEIA-ME.md`)
 - [x] Direção A · Confeito escolhida (2026-11-05)
