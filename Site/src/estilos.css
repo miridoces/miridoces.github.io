@@ -64,7 +64,7 @@ a { color: inherit; }
   .cabecalho__in { flex-wrap: wrap; gap: 4px 16px; }
   .cabecalho__logo img { width: 128px; }
   .cabecalho__cta { margin-left: auto; }
-  .cabecalho__nav { order: 3; width: 100%; margin-left: 0; gap: 20px; font-size: 15px; }
+  .cabecalho__nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; gap: 0 20px; font-size: 15px; }
   .cabecalho__nav a { padding: 6px 0; }
 }
 

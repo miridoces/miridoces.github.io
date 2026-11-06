@@ -12,6 +12,7 @@ export default function Cabecalho({ loja, pagina }) {
           <img src={logo} alt="" width="150" height="28" />
         </a>
         <nav aria-label="Navegação principal" className="cabecalho__nav">
+          {pagina !== 'inicio' && <a href={PAGINAS.inicio}>Início</a>}
           <a href={PAGINAS.cardapio} aria-current={pagina === 'cardapio' ? 'page' : undefined}>Cardápio</a>
           <a href={PAGINAS.sobre}>Sobre</a>
           <a href={PAGINAS.encomendas}>Encomendas</a>
