@@ -32,6 +32,7 @@ export default function Cardapio({ produtos, loja }) {
         <div className="pagina-cardapio__topo">
           <h1 id="cardapio-titulo">Cardápio</h1>
           <p>Tudo feito à mão, sob encomenda. Escolha o seu e chame a gente para combinar data e detalhes.</p>
+          {loja.aviso && <p className="aviso">{loja.aviso}</p>}
         </div>
         {presentes.length > 1 && (
           <div className="filtros" role="group" aria-label="Filtrar por categoria">

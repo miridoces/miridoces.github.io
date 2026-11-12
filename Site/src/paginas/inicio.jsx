@@ -1,9 +1,12 @@
 import { montar } from './montar.jsx'
 import Cabecalho from '../componentes/Cabecalho.jsx'
 import Abertura from '../componentes/Abertura.jsx'
-import MaisVendidos from '../componentes/MaisVendidos.jsx'
-import { Encomendas, Rodape, Sobre } from '../componentes/Secoes.jsx'
-import { ComoEncomendar, Sobre as TextoSobre, dadosEncomendas, dadosLoja, maisVendidos } from '../lib/conteudo.js'
+import Destaques from '../componentes/Destaques.jsx'
+import { Encomendas, FestaOnline, Rodape, Sobre } from '../componentes/Secoes.jsx'
+import {
+  ComoEncomendar, Sobre as TextoSobre, TextoDestaques, TextoFestaOnline,
+  dadosDestaques, dadosEncomendas, dadosFestaOnline, dadosLoja, destaques,
+} from '../lib/conteudo.js'
 
 function PaginaInicio() {
   return (
@@ -12,7 +15,8 @@ function PaginaInicio() {
       <Cabecalho loja={dadosLoja} pagina="inicio" />
       <main id="conteudo">
         <Abertura loja={dadosLoja} />
-        <MaisVendidos produtos={maisVendidos} loja={dadosLoja} />
+        <Destaques destaques={destaques} titulo={dadosDestaques.titulo} Texto={TextoDestaques} />
+        <FestaOnline dados={dadosFestaOnline} Texto={TextoFestaOnline} loja={dadosLoja} />
         <Sobre Texto={TextoSobre} />
         <Encomendas dados={dadosEncomendas} Texto={ComoEncomendar} loja={dadosLoja} />
       </main>

@@ -3,7 +3,7 @@
 > Fonte da verdade da identidade visual. Itens `A DEFINIR` ainda não foram decididos com a cliente;
 > itens marcados *(proposta)* foram sugeridos por nós e aguardam validação.
 > Direção escolhida: **A · Confeito** (2026-11-05). Propostas originais em `propostas.html`.
-> Última atualização: 2026-11-05
+> Última atualização: 2026-11-12 (granulado passa a ser todo Cacau `#693733`, pedido da cliente)
 
 ## Essência
 - **Nome:** MiriDoces *(confirmar: o Instagram atual se chama "MIRIÃ GLUECK FESTA R DECORAÇÃO")*
@@ -21,9 +21,10 @@
 | Primária | Framboesa | `#B5305F` | `--cor-primaria` | Logo, botões, fundo dos posts |
 | Texto | Chocolate | `#3A1E1A` | `--cor-texto` | Textos e títulos sobre fundo claro |
 | Fundo claro | Merengue | `#FFF5F7` | `--cor-fundo` | Fundo do site, áreas de foto |
-| Destaque | Caramelo | `#E7A03C` | `--cor-destaque` | Selos, etiquetas, granulado |
-| Detalhe | Pistache | `#7FA872` | `--cor-detalhe` | Granulado e pequenos detalhes |
+| Destaque | Caramelo | `#E7A03C` | `--cor-destaque` | Selos e etiquetas |
+| Detalhe | Pistache | `#7FA872` | `--cor-detalhe` | Selos e pequenos detalhes |
 | Sobre primária | Branco | `#FFFFFF` | `--cor-sobre-primaria` | Texto sobre Framboesa ou Chocolate |
+| Granulado | Cacau | `#693733` | `--cor-granulado` | Só o granulado (nunca texto nem fundo) |
 
 ### Contraste aprovado (mínimo 4.5:1 para texto)
 | Texto | Fundo | Razão | OK para |
@@ -44,7 +45,7 @@
 | Framboesa | Chocolate (e vice-versa) | 2,6:1 |
 | Caramelo | Framboesa | 2,7:1 |
 
-Caramelo e Pistache são cores de **enfeite**: granulado, selos com texto Chocolate, ícones grandes.
+Caramelo e Pistache são cores de **enfeite**: selos com texto Chocolate, ícones grandes.
 
 ## Tipografia (Google Fonts)
 - **Títulos:** Caprasimo (só existe no peso 400). Usar em títulos curtos, nunca em parágrafos.
@@ -70,7 +71,8 @@ Arquivos em `logo/` (texto convertido em curvas; não depende da fonte instalada
 
 ## Granulado
 Elemento gráfico da marca: bastõezinhos arredondados (proporção ~3:1), inclinados em ângulos variados.
-- Sobre Framboesa: Caramelo, Pistache e Branco. Sobre Merengue: Framboesa, Caramelo e Pistache.
+- Cor única: **Cacau `#693733`**, tanto sobre Framboesa quanto sobre Merengue (pedido da cliente, 2026-11-12).
+  Sobre Framboesa o contraste é baixo de propósito (tom sobre tom); sobre Merengue ele aparece bem.
 - Usar em fundos, bordas e cantos. Nunca atrás de texto pequeno nem sobre a foto do produto.
 - Disponível como textura em `tokens.css` (`--granulado-sobre-primaria`, `--granulado-sobre-fundo`).
 

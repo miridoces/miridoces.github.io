@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { LIMITE_MAIS_VENDIDOS, arquivosDeProduto, dadosLoja, maisVendidos, produtos, validarLoja, validarProduto } from './conteudo.js'
+import { CATEGORIAS, arquivosDeProduto, dadosDestaques, dadosLoja, destaques, produtos, validarDestaques, validarLoja, validarProduto } from './conteudo.js'
 import { linkEncomenda } from './contato.js'
 
 describe('conteúdo do site', () => {
@@ -20,15 +20,25 @@ describe('conteúdo do site', () => {
     expect(new Set(nomes).size).toBe(nomes.length)
   })
 
-  it('coloca os mais vendidos primeiro no cardápio', () => {
-    const iVendido = produtos.findIndex((p) => p.dados.maisVendido)
-    const iComum = produtos.findIndex((p) => !p.dados.maisVendido)
-    if (iVendido >= 0 && iComum >= 0) expect(iVendido).toBeLessThan(iComum)
+  it('agrupa o cardápio na ordem das categorias', () => {
+    const ordem = Object.keys(CATEGORIAS)
+    const posicoes = produtos.map((p) => ordem.indexOf(p.dados.categoria))
+    expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b))
   })
 
-  it(`mostra no máximo ${LIMITE_MAIS_VENDIDOS} mais vendidos na página inicial, todos marcados`, () => {
-    expect(maisVendidos.length).toBeLessThanOrEqual(LIMITE_MAIS_VENDIDOS)
-    expect(maisVendidos.every((p) => p.dados.maisVendido)).toBe(true)
+  it('destaques.mdx só usa categorias que existem', () => {
+    expect(validarDestaques(dadosDestaques)).toEqual([])
+  })
+
+  it('mostra as categorias de destaques.mdx que têm produtos, na ordem de lá, só com fotos da própria categoria', () => {
+    const escolhidas = dadosDestaques.categorias.map((i) => i.categoria)
+    const comProdutos = escolhidas.filter((c) => produtos.some((p) => p.dados.categoria === c))
+    expect(destaques.map((d) => d.categoria)).toEqual(comProdutos)
+    for (const d of destaques) {
+      const daCategoria = produtos.filter((p) => p.dados.categoria === d.categoria)
+      expect(d.total).toBe(daCategoria.length)
+      expect(d.fotos.map((f) => f.foto)).toEqual(daCategoria.filter((p) => p.dados.foto).map((p) => p.dados.foto))
+    }
   })
 })
 
@@ -38,12 +48,12 @@ describe('validações', () => {
     expect(erros).toHaveLength(2)
   })
 
-  it('avisa quando o campo antigo "destaque" é usado', () => {
-    expect(validarProduto({ nome: 'X', categoria: 'bolos', destaque: true })[0]).toMatch(/maisVendido/)
-  })
-
   it('aceita produto sem preço e sem foto', () => {
     expect(validarProduto({ nome: 'X', categoria: 'bolos', preco: null, foto: null })).toEqual([])
+  })
+
+  it('recusa categoria inexistente em destaques.mdx', () => {
+    expect(validarDestaques({ categorias: [{ categoria: 'bolos' }, { categoria: 'biscoito' }] })).toHaveLength(1)
   })
 
   it('recusa WhatsApp com formatação', () => {

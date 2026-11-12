@@ -19,10 +19,10 @@ Site (rodar dentro de `Site/`, Node 24):
   - `ArteVisual/identidade/tokens.css`: cores e fontes como variáveis CSS; site e artes importam daqui
   - `ArteVisual/identidade/logo/`: logos em curvas (SVG) e PNG; regerar com `gerar-logo.js`
 - `Site/`: site da confeitaria (Vite + React + MDX) com duas páginas HTML, sem biblioteca de rotas:
-  - `/` (`index.html` → `src/paginas/inicio.jsx`): abertura, mais vendidos, sobre, como encomendar
+  - `/` (`index.html` → `src/paginas/inicio.jsx`): abertura, destaques (`destaques.mdx`), festa on-line (`festa-online.mdx`), sobre, como encomendar
   - `/cardapio/` (`cardapio/index.html` → `src/paginas/cardapio.jsx`): cardápio com filtros; o filtro fica no hash (`/cardapio/#bolos`)
   - links internos sempre via `src/lib/caminhos.js` (respeita o `BASE_PATH`)
-  - `Site/src/conteudo/`: conteúdo editável (`loja.mdx`, `encomendas.mdx`, `produtos/*.mdx`)
+  - `Site/src/conteudo/`: conteúdo editável (`loja.mdx`, `encomendas.mdx`, `destaques.mdx`, `festa-online.mdx`, `produtos/*.mdx`)
   - `Site/src/lib/conteudo.js`: carrega e valida o conteúdo; `contato.js` monta links do WhatsApp (ou Instagram, se não houver número)
   - `Site/src/estilos.css`: usa só os tokens de `tokens.css`, sem HEX soltos
 - `Gerenciamento/`: planilha de ficha técnica e financeiro

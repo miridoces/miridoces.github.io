@@ -12,6 +12,7 @@
   --caramelo: #E7A03C;
   --pistache: #7FA872;
   --branco: #FFFFFF;
+  --cacau: #693733;                  /* só granulado */
 
   /* Paleta por função (use estas nas páginas e artes) */
   --cor-primaria: var(--framboesa);
@@ -20,6 +21,7 @@
   --cor-destaque: var(--caramelo);   /* só enfeite ou fundo de selo com texto Chocolate */
   --cor-detalhe: var(--pistache);    /* só enfeite ou fundo de selo com texto Chocolate */
   --cor-sobre-primaria: var(--branco);
+  --cor-granulado: var(--cacau);
 
   /* Tipografia */
   --fonte-titulo: "Caprasimo", "Cooper Black", Georgia, serif;
@@ -29,7 +31,7 @@
   --raio-pilula: 999px;
   --raio-cartao: 16px;
 
-  /* Granulado (textura) — use com background-image e ajuste background-size */
-  --granulado-sobre-primaria: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23E7A03C' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23FFFFFF' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%237FA872' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23E7A03C' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23FFFFFF' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%237FA872' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
-  --granulado-sobre-fundo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23E7A03C' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23B5305F' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%237FA872' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23E7A03C' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23B5305F' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%237FA872' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
+  /* Granulado (textura) — todo em Cacau (#693733); use com background-image e ajuste background-size */
+  --granulado-sobre-primaria: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
+  --granulado-sobre-fundo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
 }
