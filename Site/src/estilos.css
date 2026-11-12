@@ -38,7 +38,6 @@ a { color: inherit; }
 .botao--claro { background: var(--cor-fundo); color: var(--cor-texto); }
 @media (prefers-reduced-motion: reduce) { .botao { transition: none; } .botao:hover { transform: none; } }
 
-.etiqueta.etiqueta--vendido { background: var(--cor-detalhe); }
 .link-seta { font-weight: 700; color: var(--cor-primaria); text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; }
 .link-seta::after { content: " →"; white-space: pre; }
 .etiqueta {
@@ -118,10 +117,10 @@ a { color: inherit; }
   display: grid; grid-template-rows: auto 1fr; box-shadow: 0 1px 2px color-mix(in srgb, var(--cor-texto) 8%, transparent), 0 10px 30px color-mix(in srgb, var(--cor-texto) 7%, transparent);
 }
 .produto__foto { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-.produto__foto--vazia {
+.produto__foto--vazia, .carrossel--vazio {
   display: grid; place-items: center; background: var(--cor-fundo) var(--granulado-sobre-fundo); background-size: 100px;
 }
-.produto__foto--vazia span {
+.produto__foto--vazia span, .carrossel--vazio span {
   background: var(--cor-fundo); color: var(--cor-primaria); padding: 6px 12px; border-radius: var(--raio-pilula);
   font: 700 12px/1 var(--fonte-texto); letter-spacing: .14em; text-transform: uppercase;
 }
@@ -134,10 +133,67 @@ a { color: inherit; }
 .produto__cta { margin-top: 4px; }
 .vazio { color: var(--texto-suave); }
 
+/* Destaques: um cartão por categoria; o cartão inteiro é o link para o cardápio já filtrado */
+.destaques__acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.destaques__pausa {
+  min-height: 44px; padding: 8px 16px; border-radius: var(--raio-pilula); cursor: pointer;
+  font: 500 15px/1 var(--fonte-texto); color: var(--cor-texto);
+  background: var(--branco); border: 1px solid var(--linha);
+}
+.destaques__pausa[aria-pressed="true"] { background: var(--cor-texto); color: var(--cor-fundo); border-color: var(--cor-texto); }
+.categorias { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+.categoria {
+  height: 100%; display: grid; grid-template-rows: auto 1fr;
+  background: var(--branco); border-radius: var(--raio-cartao); overflow: hidden; color: inherit; text-decoration: none;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--cor-texto) 8%, transparent), 0 10px 30px color-mix(in srgb, var(--cor-texto) 7%, transparent);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.categoria:hover { transform: translateY(-2px); box-shadow: 0 2px 4px color-mix(in srgb, var(--cor-texto) 10%, transparent), 0 16px 36px color-mix(in srgb, var(--cor-texto) 12%, transparent); }
+.categoria:hover .link-seta { text-decoration: underline; }
+.carrossel { position: relative; aspect-ratio: 4 / 3; background-color: var(--cor-fundo); }
+.carrossel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s ease; }
+.carrossel img.ativa { opacity: 1; }
+.carrossel__pontos {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 6px;
+  padding: 5px 8px; border-radius: var(--raio-pilula); background: color-mix(in srgb, var(--cor-texto) 45%, transparent);
+}
+.carrossel__pontos i { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in srgb, var(--branco) 45%, transparent); }
+.carrossel__pontos i.ativo { background: var(--branco); }
+.categoria__corpo { padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 4px; }
+.categoria__nome { font-size: 26px; color: var(--cor-texto); }
+.categoria__qtd { color: var(--texto-suave); font-size: 15px; }
+.categoria .link-seta { margin-top: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .categoria, .carrossel img { transition: none; }
+  .categoria:hover { transform: none; }
+}
+
+.destaques__texto { max-width: 62ch; font-size: 18px; }
+
+/* Festa on-line: faixa em Framboesa (texto Branco, 5,9:1) com o kit num cartão claro */
+.festa { background: var(--cor-primaria); color: var(--cor-sobre-primaria); }
+.festa h2 { color: var(--cor-sobre-primaria); }
+.festa :focus-visible { outline-color: var(--cor-sobre-primaria); }
+.festa__in { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 6vw, 72px); }
+.festa__texto { justify-items: start; }
+.festa__texto strong { color: inherit; }
+.festa__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.festa__kit { background: var(--cor-fundo); color: var(--cor-texto); border-radius: var(--raio-cartao); padding: 24px 28px; }
+.festa__kit h3 { color: var(--cor-primaria); font-size: 28px; margin-bottom: 12px; }
+.festa__kit ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; font-size: 18px; }
+.festa__kit li::marker { color: var(--cor-primaria); }
+@media (max-width: 760px) { .festa__in { grid-template-columns: minmax(0, 1fr); } }
+
 /* Página do cardápio */
 .pagina-cardapio__topo { display: grid; gap: 10px; max-width: 60ch; }
 .pagina-cardapio h1 { font-size: clamp(40px, 7vw, 64px); color: var(--cor-primaria); }
 .pagina-cardapio__topo p { color: var(--texto-suave); font-size: 18px; }
+
+/* Aviso da loja (ex.: "Não temos pronta entrega"): Chocolate sobre Caramelo, 6,9:1 */
+p.aviso {
+  justify-self: start; max-width: 60ch; padding: 10px 16px; border-radius: 12px;
+  background: var(--cor-destaque); color: var(--cor-texto); font-size: 16px; font-weight: 500; line-height: 1.45;
+}
 
 /* Sobre */
 .sobre { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(24px, 6vw, 72px); }

@@ -1,11 +1,18 @@
 // Carrega e valida o conteúdo editável do site (arquivos .mdx em src/conteudo).
 import * as loja from '../conteudo/loja.mdx'
 import * as encomendas from '../conteudo/encomendas.mdx'
+import * as secaoDestaques from '../conteudo/destaques.mdx'
+import * as festaOnline from '../conteudo/festa-online.mdx'
 
 export const CATEGORIAS = {
   bolos: 'Bolos',
+  docinhos: 'Docinhos',
   biscoitos: 'Biscoitos',
   sobremesas: 'Sobremesas',
+  chutneys: 'Chutneys',
+  geleias: 'Geleias',
+  'festa-online': 'Festa on-line',
+  natal: 'Natal',
 }
 
 const modulos = import.meta.glob('../conteudo/produtos/*.mdx', { eager: true })
@@ -21,7 +28,6 @@ export function validarProduto(fm) {
   if (fm.preco != null && (typeof fm.preco !== 'number' || fm.preco < 0)) {
     erros.push('campo "preco" deve ser só o número, ex.: 120 ou 89.9')
   }
-  if ('destaque' in fm) erros.push('o campo "destaque" mudou de nome: use "maisVendido: true"')
   if (fm.foto != null && !/^[\w.-]+\.(jpe?g|png|webp)$/i.test(fm.foto)) {
     erros.push('campo "foto" deve ser o nome do arquivo em public/fotos, ex.: bolo.jpg')
   }
@@ -37,6 +43,9 @@ export function validarLoja(fm) {
     erros.push('campo "whatsapp" deve ter só números, com 55 + DDD, ex.: 5511987654321')
   }
   if (!fm?.whatsapp && !fm?.instagram) erros.push('preencha "whatsapp" ou "instagram" para receber encomendas')
+  if (fm?.facebook && !/^https:\/\/(www\.)?facebook\.com\/\S+$/.test(fm.facebook)) {
+    erros.push('campo "facebook" deve ser o endereço completo, ex.: https://www.facebook.com/nomedapagina')
+  }
   return erros
 }
 
@@ -49,7 +58,9 @@ export const arquivosDeProduto = Object.entries(modulos).map(([caminho, mod]) =>
   erros: validarProduto(mod.frontmatter),
 }))
 
-/** Produtos válidos e disponíveis: mais vendidos primeiro, depois pela ordem e pelo nome. */
+const ORDEM_CATEGORIAS = Object.keys(CATEGORIAS)
+
+/** Produtos válidos e disponíveis, agrupados na ordem das categorias; dentro delas, pela ordem e pelo nome. */
 export const produtos = arquivosDeProduto
   .filter((p) => {
     if (p.erros.length) {
@@ -60,14 +71,41 @@ export const produtos = arquivosDeProduto
   })
   .sort(
     (a, b) =>
-      Number(Boolean(b.dados.maisVendido)) - Number(Boolean(a.dados.maisVendido)) ||
+      ORDEM_CATEGORIAS.indexOf(a.dados.categoria) - ORDEM_CATEGORIAS.indexOf(b.dados.categoria) ||
       (a.dados.ordem ?? 999) - (b.dados.ordem ?? 999) ||
       a.dados.nome.localeCompare(b.dados.nome, 'pt-BR'),
   )
 
-/** Quantos mais vendidos aparecem na página inicial. */
-export const LIMITE_MAIS_VENDIDOS = 3
-export const maisVendidos = produtos.filter((p) => p.dados.maisVendido).slice(0, LIMITE_MAIS_VENDIDOS)
+/** Lista os problemas da seção de destaques (destaques.mdx). */
+export function validarDestaques(fm) {
+  if (!Array.isArray(fm?.categorias) || !fm.categorias.length) return ['"categorias" deve ter pelo menos uma categoria']
+  return fm.categorias
+    .filter((item) => !(item?.categoria in CATEGORIAS))
+    .map((item) => `categoria "${item?.categoria ?? ''}" inválida (use: ${ORDEM_CATEGORIAS.join(', ')})`)
+}
+
+export const dadosDestaques = secaoDestaques.frontmatter ?? {}
+export const TextoDestaques = secaoDestaques.default
+
+/**
+ * Cartões da página inicial: as categorias escolhidas em destaques.mdx, na ordem de lá,
+ * com as fotos dos produtos de cada uma. Categorias inválidas ou sem produtos ficam de fora.
+ */
+export const destaques = (dadosDestaques.categorias ?? [])
+  .filter((item) => item?.categoria in CATEGORIAS)
+  .map(({ categoria, nome }) => {
+    const itens = produtos.filter((p) => p.dados.categoria === categoria)
+    return {
+      categoria,
+      nome: nome || CATEGORIAS[categoria],
+      total: itens.length,
+      fotos: itens.filter((p) => p.dados.foto).map((p) => ({ foto: p.dados.foto, nome: p.dados.nome })),
+    }
+  })
+  .filter((d) => d.total > 0)
+
+export const dadosFestaOnline = festaOnline.frontmatter ?? {}
+export const TextoFestaOnline = festaOnline.default
 
 export const dadosLoja = loja.frontmatter ?? {}
 export const Sobre = loja.default

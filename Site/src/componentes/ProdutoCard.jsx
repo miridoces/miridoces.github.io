@@ -3,7 +3,7 @@ import { linkEncomenda } from '../lib/contato.js'
 import { url } from '../lib/caminhos.js'
 
 export default function ProdutoCard({ produto, loja, titulo: Titulo = 'h2' }) {
-  const { nome, categoria, preco, unidade, foto, maisVendido } = produto.dados
+  const { nome, categoria, preco, unidade, foto } = produto.dados
   const { Descricao } = produto
   const contato = linkEncomenda(loja, nome)
   const valor = formatarPreco(preco)
@@ -19,7 +19,6 @@ export default function ProdutoCard({ produto, loja, titulo: Titulo = 'h2' }) {
       <div className="produto__corpo">
         <div className="produto__selos">
           <span className="etiqueta">{CATEGORIAS[categoria]}</span>
-          {maisVendido && <span className="etiqueta etiqueta--vendido">Mais vendido</span>}
         </div>
         <Titulo className="produto__nome">{nome}</Titulo>
         <div className="produto__desc"><Descricao /></div>
