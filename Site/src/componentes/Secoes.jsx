@@ -75,7 +75,6 @@ export function Rodape({ loja }) {
         <ul>
           <li><a href={PAGINAS.cardapio}>Cardápio</a></li>
           {insta && <li><a href={insta} target="_blank" rel="noopener">Instagram @{loja.instagram}</a></li>}
-          {loja.facebook && <li><a href={loja.facebook} target="_blank" rel="noopener">Facebook</a></li>}
           {loja.whatsapp && <li><a href={`https://wa.me/${loja.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a></li>}
           {loja.cidade && <li>{loja.cidade}</li>}
         </ul>

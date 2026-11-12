@@ -52,11 +52,6 @@ describe('validações', () => {
     expect(validarProduto({ nome: 'X', categoria: 'bolos', preco: null, foto: null })).toEqual([])
   })
 
-  it('recusa Facebook sem o endereço completo', () => {
-    expect(validarLoja({ nome: 'X', titulo: 'Y', instagram: 'z', facebook: 'miria.confeitaria' })).toHaveLength(1)
-    expect(validarLoja({ nome: 'X', titulo: 'Y', instagram: 'z', facebook: 'https://www.facebook.com/miria' })).toEqual([])
-  })
-
   it('recusa categoria inexistente em destaques.mdx', () => {
     expect(validarDestaques({ categorias: [{ categoria: 'bolos' }, { categoria: 'biscoito' }] })).toHaveLength(1)
   })

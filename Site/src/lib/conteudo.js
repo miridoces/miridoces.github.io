@@ -43,9 +43,6 @@ export function validarLoja(fm) {
     erros.push('campo "whatsapp" deve ter só números, com 55 + DDD, ex.: 5511987654321')
   }
   if (!fm?.whatsapp && !fm?.instagram) erros.push('preencha "whatsapp" ou "instagram" para receber encomendas')
-  if (fm?.facebook && !/^https:\/\/(www\.)?facebook\.com\/\S+$/.test(fm.facebook)) {
-    erros.push('campo "facebook" deve ser o endereço completo, ex.: https://www.facebook.com/nomedapagina')
-  }
   return erros
 }
 
