@@ -1,6 +1,6 @@
 # MiriConfeitaria
 
-Trabalho para a confeitaria MiriDoces: identidade visual e Instagram, site e planilha de
+Trabalho para a confeitaria Nosso Doce Seu (antes MiriDoces): identidade visual e Instagram, site e planilha de
 gestão (ficha técnica, insumos, custos e resumo financeiro).
 
 - **Tipo:** design + web + planilha
@@ -15,14 +15,14 @@ Site (rodar dentro de `Site/`, Node 24):
 - Build: `npm run build` (`BASE_PATH=/<repo>/` para GitHub Pages)
 
 ## Estrutura
-- `ArteVisual/`: identidade (`ArteVisual/identidade/marca.md` é a fonte da verdade; direção A · Confeito) e artes do Instagram
+- `ArteVisual/`: identidade (`ArteVisual/identidade/marca.md` é a fonte da verdade; logo com chantilly e cereja, desde 2026-11-13) e artes do Instagram
   - `ArteVisual/identidade/tokens.css`: cores e fontes como variáveis CSS; site e artes importam daqui
-  - `ArteVisual/identidade/logo/`: logos em curvas (SVG) e PNG; regerar com `gerar-logo.js`
+  - `ArteVisual/identidade/logo/`: logos em PNG gerados da arte da cliente (`nossodoceseu-original.jpg`); regerar com `preparar-logo.py` (Pillow)
 - `Site/`: site da confeitaria (Vite + React + MDX) com duas páginas HTML, sem biblioteca de rotas:
   - `/` (`index.html` → `src/paginas/inicio.jsx`): abertura, destaques (`destaques.mdx`), festa on-line (`festa-online.mdx`), sobre, como encomendar
   - `/cardapio/` (`cardapio/index.html` → `src/paginas/cardapio.jsx`): cardápio com filtros; o filtro fica no hash (`/cardapio/#bolos`)
   - links internos sempre via `src/lib/caminhos.js` (respeita o `BASE_PATH`)
-  - `Site/src/conteudo/`: conteúdo editável (`loja.mdx`, `encomendas.mdx`, `destaques.mdx`, `festa-online.mdx`, `produtos/*.mdx`)
+  - `Site/src/conteudo/`: conteúdo editável (`loja.mdx`, `encomendas.mdx`, `destaques.mdx`, `festa-online.mdx`, `categorias.mdx` com recados por categoria, `produtos/*.mdx`)
   - `Site/src/lib/conteudo.js`: carrega e valida o conteúdo; `contato.js` monta links do WhatsApp (ou Instagram, se não houver número)
   - `Site/src/estilos.css`: usa só os tokens de `tokens.css`, sem HEX soltos
 - `Gerenciamento/`: planilha de ficha técnica e financeiro

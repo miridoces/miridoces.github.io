@@ -1,10 +1,10 @@
 ---
 name: identidade-miridoces
-description: Define, atualiza e aplica a identidade visual da MiriDoces (paleta, tipografia, logo, tom de voz). Use quando eu pedir para criar ou mudar a identidade da marca, e consulte-a antes de criar qualquer arte, post, página do site ou documento da MiriDoces, para manter tudo consistente.
+description: Define, atualiza e aplica a identidade visual da Nosso Doce Seu, antiga MiriDoces (paleta, tipografia, logo, tom de voz). Use quando eu pedir para criar ou mudar a identidade da marca, e consulte-a antes de criar qualquer arte, post, página do site ou documento da Nosso Doce Seu (ou MiriDoces), para manter tudo consistente.
 argument-hint: "[definir | atualizar <item> | consultar]"
 ---
 
-# Identidade MiriDoces
+# Identidade Nosso Doce Seu (antiga MiriDoces)
 
 Pedido: $ARGUMENTS
 

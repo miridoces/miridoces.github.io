@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// Cores, fontes e granulado vêm do guia da marca (fonte única)
+// Cores e fontes vêm do guia da marca (fonte única)
 import '../../../ArteVisual/identidade/tokens.css'
 import '../estilos.css'
 

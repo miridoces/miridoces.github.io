@@ -47,7 +47,7 @@ function Carrossel({ fotos, parado, atraso }) {
 
 /** Cartão de uma categoria: o cartão inteiro leva ao cardápio com o filtro dela aplicado. */
 function CartaoCategoria({ destaque, pausado, atraso }) {
-  const { categoria, nome, total, fotos } = destaque
+  const { categoria, nome, total, fotos, recado } = destaque
   const [emUso, setEmUso] = useState(false) // mouse em cima ou foco do teclado: segura a foto atual
   return (
     <li>
@@ -63,6 +63,7 @@ function CartaoCategoria({ destaque, pausado, atraso }) {
         <div className="categoria__corpo">
           <h3 className="categoria__nome">{nome}</h3>
           <span className="categoria__qtd">{total} {total === 1 ? 'opção' : 'opções'}</span>
+          {recado && <span className="categoria__recado">{recado}</span>}
           <span className="link-seta">Ver no cardápio</span>
         </div>
       </a>

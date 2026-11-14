@@ -1,15 +1,15 @@
-import simbolo from '../../../ArteVisual/identidade/logo/miridoces-simbolo.svg'
-import logoBranco from '../../../ArteVisual/identidade/logo/miridoces-branco.svg'
-import { linkEncomenda, linkInstagram } from '../lib/contato.js'
+import simbolo from '../../../ArteVisual/identidade/logo/web/simbolo-640.png'
+import logoCreme from '../../../ArteVisual/identidade/logo/web/nome-creme-400.png'
+import { formatarTelefone, linkEncomenda, linkInstagram } from '../lib/contato.js'
 import { PAGINAS } from '../lib/caminhos.js'
 
 export function Sobre({ Texto }) {
   return (
     <section id="sobre" className="secao secao--branca" aria-labelledby="sobre-titulo">
       <div className="secao__in sobre">
-        <img className="sobre__simbolo" src={simbolo} alt="" width="200" height="200" />
+        <img className="sobre__simbolo" src={simbolo} alt="" width="200" height="144" loading="lazy" />
         <div className="texto">
-          <h2 id="sobre-titulo">Sobre</h2>
+          <h2 id="sobre-titulo">Quem somos</h2>
           <Texto />
         </div>
       </div>
@@ -68,14 +68,21 @@ export function Encomendas({ dados, Texto, loja }) {
 
 export function Rodape({ loja }) {
   const insta = linkInstagram(loja)
+  const telefone = formatarTelefone(loja.whatsapp)
   return (
     <footer className="rodape">
       <div className="rodape__in">
-        <img src={logoBranco} alt={loja.nome} width="150" height="28" />
+        <img src={logoCreme} alt={loja.nome} width="170" height="44" loading="lazy" />
         <ul>
           <li><a href={PAGINAS.cardapio}>Cardápio</a></li>
           {insta && <li><a href={insta} target="_blank" rel="noopener">Instagram @{loja.instagram}</a></li>}
-          {loja.whatsapp && <li><a href={`https://wa.me/${loja.whatsapp}`} target="_blank" rel="noopener">WhatsApp</a></li>}
+          {telefone && (
+            <li>
+              Encomendas por telefone ou WhatsApp:{' '}
+              <a href={`https://wa.me/${loja.whatsapp}`} target="_blank" rel="noopener">{telefone}</a>
+              {loja.responsavel && ` (${loja.responsavel})`}
+            </li>
+          )}
           {loja.cidade && <li>{loja.cidade}</li>}
         </ul>
         <small>© {new Date().getFullYear()} {loja.nome}. Feito à mão, sob encomenda.</small>

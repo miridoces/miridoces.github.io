@@ -3,6 +3,7 @@ import * as loja from '../conteudo/loja.mdx'
 import * as encomendas from '../conteudo/encomendas.mdx'
 import * as secaoDestaques from '../conteudo/destaques.mdx'
 import * as festaOnline from '../conteudo/festa-online.mdx'
+import * as categorias from '../conteudo/categorias.mdx'
 
 export const CATEGORIAS = {
   bolos: 'Bolos',
@@ -61,7 +62,7 @@ const ORDEM_CATEGORIAS = Object.keys(CATEGORIAS)
 export const produtos = arquivosDeProduto
   .filter((p) => {
     if (p.erros.length) {
-      console.error(`[MiriDoces] ${p.arquivo} ignorado: ${p.erros.join('; ')}`)
+      console.error(`[Nosso Doce Seu] ${p.arquivo} ignorado: ${p.erros.join('; ')}`)
       return false
     }
     return p.dados.disponivel !== false
@@ -81,6 +82,24 @@ export function validarDestaques(fm) {
     .map((item) => `categoria "${item?.categoria ?? ''}" inválida (use: ${ORDEM_CATEGORIAS.join(', ')})`)
 }
 
+/** Lista os problemas dos recados por categoria (categorias.mdx). */
+export function validarRecados(fm) {
+  const recados = fm?.recados
+  if (recados == null) return []
+  if (typeof recados !== 'object' || Array.isArray(recados)) return ['"recados" deve ter uma linha por categoria, ex.: natal: Pedidos até 18 de dezembro']
+  return Object.entries(recados).flatMap(([c, texto]) => [
+    ...(c in CATEGORIAS ? [] : [`categoria "${c}" inválida (use: ${ORDEM_CATEGORIAS.join(', ')})`]),
+    ...(typeof texto === 'string' && texto.trim() ? [] : [`recado de "${c}" vazio`]),
+  ])
+}
+
+export const dadosCategorias = categorias.frontmatter ?? {}
+
+/** Recado de cada categoria válida, ex.: { natal: 'Agenda aberta!…' }. */
+export const recados = Object.fromEntries(
+  Object.entries(dadosCategorias.recados ?? {}).filter(([c, t]) => c in CATEGORIAS && typeof t === 'string' && t.trim()),
+)
+
 export const dadosDestaques = secaoDestaques.frontmatter ?? {}
 export const TextoDestaques = secaoDestaques.default
 
@@ -96,6 +115,7 @@ export const destaques = (dadosDestaques.categorias ?? [])
       categoria,
       nome: nome || CATEGORIAS[categoria],
       total: itens.length,
+      recado: recados[categoria] ?? null,
       fotos: itens.filter((p) => p.dados.foto).map((p) => ({ foto: p.dados.foto, nome: p.dados.nome })),
     }
   })
