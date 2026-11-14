@@ -40,7 +40,7 @@
 - [x] Domínio próprio no ar (2026-11-14): https://nossodoceseu.com.br com HTTPS; DNS no Registro.br (modo avançado, A/AAAA do GitHub Pages e `www` → miridoces.github.io); miridoces.github.io e www redirecionam
 - [x] Instagram novo @nosso.doce.seu no site e no guia; foto da casinha de biscoito de especiarias
 - [x] Cardápio com cartões padronizados (mesma altura; nome em 2 linhas, descrição em 3 e "Ver detalhes" com o texto completo)
-- [x] Site e guia conforme o folder da cliente (2026-11-13): WhatsApp (31) 98868-3545, texto "Quem somos", kit da Festa on-line, prazo do Natal (recados em `categorias.mdx`), docinhos fora do folder escondidos, fonte Nunito e títulos em `#BF0A37`
+- [x] Site e guia conforme o folder da cliente (2026-11-13): número do WhatsApp, texto "Quem somos", kit da Festa on-line, prazo do Natal (recados em `categorias.mdx`), docinhos fora do folder escondidos, fonte Nunito e títulos em `#BF0A37`
 - [x] Marca trocada para Nosso Doce Seu (2026-11-13): logo da cliente (chantilly com cereja), paleta Chocolate/Creme/Cereja/Chantilly/Rosa, títulos em Dancing Script; `marca.md`, `tokens.css`, `previa.html`, logos e site atualizados; granulado aposentado
 - [x] Site: seção "Mais vendidos" na página inicial (campo `maisVendido`) e cardápio em página própria `/cardapio/` com filtros Todos, Bolos, Biscoitos, Sobremesas; granulado do topo corrigido no celular
 - [x] Site no ar em https://miridoces.github.io/ (organização `miridoces`, repositório `miridoces.github.io`, deploy automático pela `main`)
