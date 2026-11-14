@@ -19,7 +19,7 @@
 - **Conceito visual:** a cereja do bolo. Chantilly cremoso, letra cursiva em chocolate e uma cereja
   vermelha que chama atenção: delicado, caseiro e com um toque de festa.
 - **Diferencial:** A DEFINIR
-- **Contato para encomendas:** WhatsApp A DEFINIR · Instagram A DEFINIR (hoje @miria.confeitaria; confirmar se muda com o nome novo)
+- **Contato para encomendas:** WhatsApp (31) 98868-3545 (Miriã Glueck) · Instagram @nosso.doce.seu (https://www.instagram.com/nosso.doce.seu/)
 - **Embalagem/impressos:** fora do escopo por enquanto
 
 ## Paleta

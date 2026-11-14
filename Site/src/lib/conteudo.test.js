@@ -78,7 +78,7 @@ describe('links de encomenda', () => {
   })
 
   it('cai para o Instagram sem WhatsApp', () => {
-    expect(linkEncomenda({ instagram: 'miria.confeitaria' }).href).toBe('https://ig.me/m/miria.confeitaria')
+    expect(linkEncomenda({ instagram: 'nosso.doce.seu' }).href).toBe('https://ig.me/m/nosso.doce.seu')
   })
 })
 
