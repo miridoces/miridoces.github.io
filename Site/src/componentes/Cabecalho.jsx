@@ -1,4 +1,4 @@
-import logo from '../../../ArteVisual/identidade/logo/miridoces-principal.svg'
+import logo from '../../../ArteVisual/identidade/logo/web/nome-560.png'
 import { linkEncomenda } from '../lib/contato.js'
 import { PAGINAS } from '../lib/caminhos.js'
 
@@ -9,12 +9,12 @@ export default function Cabecalho({ loja, pagina }) {
     <header className="cabecalho">
       <div className="cabecalho__in">
         <a href={PAGINAS.inicio} className="cabecalho__logo" aria-label={`${loja.nome}, página inicial`}>
-          <img src={logo} alt="" width="150" height="28" />
+          <img src={logo} alt="" width="190" height="49" />
         </a>
         <nav aria-label="Navegação principal" className="cabecalho__nav">
           <a href={PAGINAS.inicio}>Início</a>
           <a href={PAGINAS.cardapio} aria-current={pagina === 'cardapio' ? 'page' : undefined}>Cardápio</a>
-          <a href={PAGINAS.sobre}>Sobre</a>
+          <a href={PAGINAS.sobre}>Quem somos</a>
           <a href={PAGINAS.encomendas}>Encomendas</a>
         </nav>
         {contato.canal && (

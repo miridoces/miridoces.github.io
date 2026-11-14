@@ -1,6 +1,6 @@
 # MiriConfeitaria
 
-Projeto para a confeitaria **MiriDoces**, com três entregas:
+Projeto para a confeitaria **Nosso Doce Seu** (antes MiriDoces), com três entregas:
 
 1. **Arte visual**: identidade da marca e artes para o Instagram (posts, carrosséis, stories).
 2. **Site**: vitrine dos produtos com encomenda pelo WhatsApp.

@@ -3,7 +3,9 @@
 ## Em andamento
 - [ ] Preencher conteúdo real do site: WhatsApp, cidade, produtos, preços e fotos — arquivos: `Site/src/conteudo/`, `Site/public/fotos/` — pronto quando: nenhum produto de EXEMPLO e `npm test` passando
 - [ ] Validar o guia da marca com a cliente (https://claude.ai/artifact/Cbipcc9ok8zimuxf6cQLgp) — arquivos: `ArteVisual/identidade/marca.md` — pronto quando: tom de voz e fotografia aprovados (hoje são proposta) e preenchidos diferencial, WhatsApp e hashtags
-- [ ] Confirmar com a cliente o nome da marca (perfil do Instagram usa "Miriã Glueck Festa e Decoração") e o WhatsApp de encomendas
+- [ ] Confirmar com a cliente: grafia do nome em texto (usamos "Nosso Doce Seu"), e se o Instagram @miria.confeitaria muda de nome
+- [ ] Pedir à cliente o logo em vetor (SVG/PDF/AI) ou PNG grande com fundo transparente — hoje só temos o JPEG 1536×1024 — arquivos: `ArteVisual/identidade/logo/` — pronto quando: logos regerados a partir do original em alta
+- [ ] Atualizar o guia publicado (https://claude.ai/artifact/Cbipcc9ok8zimuxf6cQLgp) com a marca nova, a partir de `ArteVisual/identidade/previa.html`
 
 ## A fazer
 
@@ -35,6 +37,9 @@
 - [ ] Apontar o domínio da cliente (DNS + `Site/public/CNAME`, `base` do Vite = `/`, HTTPS ativado) — pronto quando: site abre no domínio com HTTPS
 
 ## Concluído
+- [x] Cardápio com cartões padronizados (mesma altura; nome em 2 linhas, descrição em 3 e "Ver detalhes" com o texto completo)
+- [x] Site e guia conforme o folder da cliente (2026-11-13): WhatsApp (31) 98868-3545, texto "Quem somos", kit da Festa on-line, prazo do Natal (recados em `categorias.mdx`), docinhos fora do folder escondidos, fonte Nunito e títulos em `#BF0A37`
+- [x] Marca trocada para Nosso Doce Seu (2026-11-13): logo da cliente (chantilly com cereja), paleta Chocolate/Creme/Cereja/Chantilly/Rosa, títulos em Dancing Script; `marca.md`, `tokens.css`, `previa.html`, logos e site atualizados; granulado aposentado
 - [x] Site: seção "Mais vendidos" na página inicial (campo `maisVendido`) e cardápio em página própria `/cardapio/` com filtros Todos, Bolos, Biscoitos, Sobremesas; granulado do topo corrigido no celular
 - [x] Site no ar em https://miridoces.github.io/ (organização `miridoces`, repositório `miridoces.github.io`, deploy automático pela `main`)
 - [x] Repositório https://github.com/TiagoGlueck/miridoces criado (push via SSH) e workflow de deploy no GitHub Pages; build, testes e lint passam no Actions

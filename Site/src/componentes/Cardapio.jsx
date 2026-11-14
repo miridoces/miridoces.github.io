@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ProdutoCard from './ProdutoCard.jsx'
-import { CATEGORIAS } from '../lib/conteudo.js'
+import { CATEGORIAS, recados } from '../lib/conteudo.js'
 
 // O filtro fica no endereço (ex.: /cardapio/#bolos) para dar para compartilhar o link.
 function filtroDoEndereco() {
@@ -25,6 +25,10 @@ export default function Cardapio({ produtos, loja }) {
 
   const presentes = Object.keys(CATEGORIAS).filter((c) => produtos.some((p) => p.dados.categoria === c))
   const visiveis = filtro === 'todos' ? produtos : produtos.filter((p) => p.dados.categoria === filtro)
+  // em "Todos" aparecem todos os recados, com o nome da categoria; num filtro, só o dela
+  const recadosVisiveis = (filtro === 'todos' ? presentes : [filtro])
+    .filter((c) => recados[c])
+    .map((c) => ({ c, texto: filtro === 'todos' ? `${CATEGORIAS[c]}: ${recados[c]}` : recados[c] }))
 
   return (
     <section className="secao pagina-cardapio" aria-labelledby="cardapio-titulo">
@@ -42,6 +46,11 @@ export default function Cardapio({ produtos, loja }) {
               </button>
             ))}
           </div>
+        )}
+        {recadosVisiveis.length > 0 && (
+          <ul className="recados" aria-live="polite">
+            {recadosVisiveis.map(({ c, texto }) => <li key={c}>{texto}</li>)}
+          </ul>
         )}
         {visiveis.length ? (
           <div className="produtos" aria-live="polite">

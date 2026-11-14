@@ -1,4 +1,4 @@
-# Skills do projeto MiriDoces
+# Skills do projeto Nosso Doce Seu (antes MiriDoces)
 
 Skills específicas deste projeto. Cada skill fica em uma subpasta com um `SKILL.md`:
 
@@ -12,7 +12,7 @@ Skills específicas deste projeto. Cada skill fica em uma subpasta com um `SKILL
 > O Claude Code só descobre skills de projeto em `.claude/skills/`. Para usar as
 > skills desta pasta, crie um link: `mkdir -p .claude && ln -s ../.skills .claude/skills`
 
-## Skills a criar (específicas da MiriDoces)
+## Skills a criar (específicas da Nosso Doce Seu)
 
 | Skill | Frente | O que faz |
 |---|---|---|

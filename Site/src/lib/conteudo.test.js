@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { CATEGORIAS, arquivosDeProduto, dadosDestaques, dadosLoja, destaques, produtos, validarDestaques, validarLoja, validarProduto } from './conteudo.js'
-import { linkEncomenda } from './contato.js'
+import { CATEGORIAS, arquivosDeProduto, dadosCategorias, dadosDestaques, dadosLoja, destaques, produtos, validarDestaques, validarLoja, validarProduto, validarRecados } from './conteudo.js'
+import { formatarTelefone, linkEncomenda } from './contato.js'
 
 describe('conteúdo do site', () => {
   it('tem pelo menos um produto', () => {
@@ -24,6 +24,15 @@ describe('conteúdo do site', () => {
     const ordem = Object.keys(CATEGORIAS)
     const posicoes = produtos.map((p) => ordem.indexOf(p.dados.categoria))
     expect(posicoes).toEqual([...posicoes].sort((a, b) => a - b))
+  })
+
+  it('categorias.mdx só tem recados de categorias que existem', () => {
+    expect(validarRecados(dadosCategorias)).toEqual([])
+  })
+
+  it('aponta recado de categoria inexistente ou vazio', () => {
+    expect(validarRecados({ recados: { natal: 'ok', pascoa: 'x', bolos: '' } })).toHaveLength(2)
+    expect(validarRecados({})).toEqual([])
   })
 
   it('destaques.mdx só usa categorias que existem', () => {
@@ -63,12 +72,20 @@ describe('validações', () => {
 
 describe('links de encomenda', () => {
   it('usa o WhatsApp com mensagem pronta quando há número', () => {
-    const { href, canal } = linkEncomenda({ nome: 'MiriDoces', whatsapp: '5511987654321' }, 'Bolo de festa')
+    const { href, canal } = linkEncomenda({ nome: 'Nosso Doce Seu', whatsapp: '5511987654321' }, 'Bolo de festa')
     expect(canal).toBe('WhatsApp')
-    expect(href).toBe('https://wa.me/5511987654321?text=Ol%C3%A1%2C%20MiriDoces!%20Quero%20encomendar%3A%20Bolo%20de%20festa.')
+    expect(href).toBe('https://wa.me/5511987654321?text=Ol%C3%A1%2C%20Nosso%20Doce%20Seu!%20Quero%20encomendar%3A%20Bolo%20de%20festa.')
   })
 
   it('cai para o Instagram sem WhatsApp', () => {
     expect(linkEncomenda({ instagram: 'miria.confeitaria' }).href).toBe('https://ig.me/m/miria.confeitaria')
+  })
+})
+
+describe('telefone', () => {
+  it('formata o WhatsApp para mostrar na tela', () => {
+    expect(formatarTelefone('5531988683545')).toBe('(31) 98868-3545')
+    expect(formatarTelefone('551132654321')).toBe('(11) 3265-4321')
+    expect(formatarTelefone('')).toBeNull()
   })
 })

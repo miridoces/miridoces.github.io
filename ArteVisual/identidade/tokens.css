@@ -1,37 +1,34 @@
 /*
- * Tokens da marca MiriDoces — direção A · Confeito
+ * Tokens da marca Nosso Doce Seu — logo com chantilly e cereja (2026-11-13);
+ * fonte e vermelho dos títulos conforme o folder da cliente
  * Fonte da verdade: ArteVisual/identidade/marca.md (mude lá primeiro e replique aqui).
  * Fontes: carregue antes deste arquivo
- *   https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap
+ *   https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700;800&display=swap
  */
 :root {
-  /* Paleta por nome */
-  --framboesa: #B5305F;
-  --chocolate: #3A1E1A;
-  --merengue: #FFF5F7;
-  --caramelo: #E7A03C;
-  --pistache: #7FA872;
+  /* Paleta por nome (tirada do logo) */
+  --chocolate: #561B06;
+  --creme: #FDF3E4;
+  --cereja: #BF0A37;
+  --rosa: #F7808A;
+  --chantilly: #FFE1CF;
   --branco: #FFFFFF;
-  --cacau: #693733;                  /* só granulado */
 
   /* Paleta por função (use estas nas páginas e artes) */
-  --cor-primaria: var(--framboesa);
+  --cor-primaria: var(--cereja);      /* botões, preços, links; texto Branco por cima */
   --cor-texto: var(--chocolate);
-  --cor-fundo: var(--merengue);
-  --cor-destaque: var(--caramelo);   /* só enfeite ou fundo de selo com texto Chocolate */
-  --cor-detalhe: var(--pistache);    /* só enfeite ou fundo de selo com texto Chocolate */
+  --cor-titulo: var(--cereja);         /* títulos grandes (h1, h2), como no folder */
+  --cor-fundo: var(--creme);
+  --cor-fundo-alt: var(--chantilly);  /* faixas e áreas de destaque, texto Chocolate */
+  --cor-destaque: var(--rosa);        /* só fios, enfeites ou fundo de selo com texto Chocolate */
   --cor-sobre-primaria: var(--branco);
-  --cor-granulado: var(--cacau);
 
   /* Tipografia */
-  --fonte-titulo: "Caprasimo", "Cooper Black", Georgia, serif;
-  --fonte-texto: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --peso-titulo: 800;
+  --fonte-texto: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Formas */
   --raio-pilula: 999px;
   --raio-cartao: 16px;
-
-  /* Granulado (textura) — todo em Cacau (#693733); use com background-image e ajuste background-size */
-  --granulado-sobre-primaria: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
-  --granulado-sobre-fundo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Crect x='14' y='18' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(35 22 20)'/%3E%3Crect x='70' y='12' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-20 78 14)'/%3E%3Crect x='42' y='58' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(70 50 60)'/%3E%3Crect x='92' y='70' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-55 100 72)'/%3E%3Crect x='10' y='92' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(10 18 94)'/%3E%3Crect x='66' y='100' width='16' height='5' rx='2.5' fill='%23693733' transform='rotate(-30 74 102)'/%3E%3C/svg%3E");
 }
