@@ -1,4 +1,4 @@
-import simbolo from '../../../ArteVisual/identidade/logo/web/simbolo-640.png'
+import logo from '../../../ArteVisual/identidade/logo/web/principal-900.png'
 import { linkEncomenda } from '../lib/contato.js'
 import { PAGINAS } from '../lib/caminhos.js'
 
@@ -19,7 +19,7 @@ export default function Abertura({ loja }) {
             <a className="botao botao--claro" href={PAGINAS.cardapio}>Ver cardápio</a>
           </div>
         </div>
-        <img className="inicio__simbolo" src={simbolo} alt="" width="420" height="302" fetchpriority="high" />
+        <img className="inicio__logo" src={logo} alt="" width="440" height="252" fetchpriority="high" />
       </div>
     </section>
   )

@@ -7,6 +7,7 @@ Uso:
 Entrada: a arte original (fundo creme liso, logo no centro).
 Saída (na pasta indicada):
     nossodoceseu-principal.png      logo completo, fundo transparente, alta resolução
+    nossodoceseu-principal-creme.png  logo completo em uma cor (Creme), para fundos escuros
     nossodoceseu-nome.png           só o nome + "CONFEITARIA" (sem o chantilly), para faixas horizontais
     nossodoceseu-nome-creme.png     o mesmo, em uma cor (Creme), para fundos escuros
     nossodoceseu-simbolo.png        só o chantilly com a cereja
@@ -210,6 +211,7 @@ def main():
     s = lambda nome_arq: os.path.join(args.saida, nome_arq)
     print('Salvando:')
     salvar(principal, s('nossodoceseu-principal.png'))
+    salvar(em_uma_cor(principal, CREME), s('nossodoceseu-principal-creme.png'))
     salvar(nome, s('nossodoceseu-nome.png'))
     salvar(em_uma_cor(nome, CREME), s('nossodoceseu-nome-creme.png'))
     salvar(simbolo, s('nossodoceseu-simbolo.png'))
@@ -218,6 +220,8 @@ def main():
     salvar(reduzir(em_uma_cor(nome, CREME), 400), s('web/nome-creme-400.png'))
     salvar(reduzir(simbolo, 640), s('web/simbolo-640.png'))
     salvar(reduzir(principal, 900), s('web/principal-900.png'))
+    salvar(reduzir(principal, 480), s('web/principal-480.png'))
+    salvar(reduzir(em_uma_cor(principal, CREME), 480), s('web/principal-creme-480.png'))
     if args.favicon_dir:
         salvar(no_quadrado(cabinho, 64, ocupacao=0.98), os.path.join(args.favicon_dir, 'favicon.png'))
         salvar(no_quadrado(simbolo, 180, fundo=CREME, ocupacao=0.82), os.path.join(args.favicon_dir, 'apple-touch-icon.png'))

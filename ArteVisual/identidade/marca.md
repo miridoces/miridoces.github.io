@@ -73,8 +73,9 @@ com `preparar-logo.py`. Todos estão em `logo/`:
 | Arquivo | Quando usar |
 |---|---|
 | `nossodoceseu-original.jpg` | A arte como a cliente enviou (fundo creme). Guardar; não editar. |
-| `nossodoceseu-principal.png` | Logo completo, fundo transparente. **Só sobre Creme, Chantilly ou Branco.** |
-| `nossodoceseu-nome.png` | Só o nome + "CONFEITARIA", para espaços horizontais (cabeçalho do site). Fundos claros. |
+| `nossodoceseu-principal.png` | Logo completo, fundo transparente. **Só sobre Creme, Chantilly ou Branco.** No site: abertura e "Quem somos". |
+| `nossodoceseu-principal-creme.png` | Logo completo em uma cor (Creme), para fundo Chocolate ou foto escura. No site: rodapé. |
+| `nossodoceseu-nome.png` | Só o nome + "CONFEITARIA", para espaços horizontais. No site, só no cabeçalho. Fundos claros. |
 | `nossodoceseu-nome-creme.png` | O nome em uma cor (Creme), para fundo Chocolate ou foto escura. |
 | `nossodoceseu-simbolo.png` | Só o chantilly com a cereja: selo, marca d'água, enfeite. Fundos claros. |
 | `nossodoceseu-perfil-1080.png` | Foto de perfil do Instagram (símbolo em círculo Creme). |
