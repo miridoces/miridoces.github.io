@@ -31,7 +31,7 @@ npm run lint
 npm run build     # gera Site/dist/
 ```
 
-Publicação: cada push na `main` publica o site em https://miridoces.github.io/ pelo GitHub Actions
+Publicação: cada push na `main` publica o site em https://nossodoceseu.com.br/ pelo GitHub Actions
 (`.github/workflows/deploy.yml`, que roda testes, lint e build antes). Para gerar localmente
 para uma subpasta, use `BASE_PATH=/<pasta>/ npm run build`.
 

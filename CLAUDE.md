@@ -36,8 +36,10 @@ Site (rodar dentro de `Site/`, Node 24):
   com frontmatter em `Site/src/conteudo/`; componentes React só cuidam do layout. Atualizar
   o cardápio não deve exigir mexer em código. Saída 100% estática (`dist/`), sem backend.
 - Hospedagem: GitHub Pages, repositório `miridoces/miridoces.github.io` (organização própria),
-  publicado em https://miridoces.github.io/ pelo workflow `.github/workflows/deploy.yml` a cada
-  push na `main`. Depois vai para o domínio da cliente. O `base` do Vite vem da variável
+  publicado em https://nossodoceseu.com.br/ pelo workflow `.github/workflows/deploy.yml` a cada
+  push na `main` (o miridoces.github.io redireciona para lá). O domínio é configurado no GitHub
+  Pages (Settings > Pages), não por arquivo `CNAME`; o DNS fica no Registro.br em modo avançado
+  (registros A/AAAA do GitHub Pages e `www` CNAME `miridoces.github.io`). O `base` do Vite vem da variável
   `BASE_PATH` (o workflow calcula), então caminhos de imagens e links nunca são fixos: use
   `import.meta.env.BASE_URL` ou imports, nunca `/foto.jpg`.
   Se houver rotas, use `HashRouter` ou um `404.html` de fallback, porque o GitHub Pages não
