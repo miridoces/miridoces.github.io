@@ -1,5 +1,5 @@
-import simbolo from '../../../ArteVisual/identidade/logo/web/simbolo-640.png'
-import logoCreme from '../../../ArteVisual/identidade/logo/web/nome-creme-400.png'
+import logo from '../../../ArteVisual/identidade/logo/web/principal-480.png'
+import logoCreme from '../../../ArteVisual/identidade/logo/web/principal-creme-480.png'
 import { formatarTelefone, linkEncomenda, linkInstagram } from '../lib/contato.js'
 import { PAGINAS } from '../lib/caminhos.js'
 
@@ -7,7 +7,7 @@ export function Sobre({ Texto }) {
   return (
     <section id="sobre" className="secao secao--branca" aria-labelledby="sobre-titulo">
       <div className="secao__in sobre">
-        <img className="sobre__simbolo" src={simbolo} alt="" width="200" height="144" loading="lazy" />
+        <img className="sobre__logo" src={logo} alt="" width="240" height="138" loading="lazy" />
         <div className="texto">
           <h2 id="sobre-titulo">Quem somos</h2>
           <Texto />
@@ -72,7 +72,7 @@ export function Rodape({ loja }) {
   return (
     <footer className="rodape">
       <div className="rodape__in">
-        <img src={logoCreme} alt={loja.nome} width="170" height="44" loading="lazy" />
+        <img src={logoCreme} alt={loja.nome} width="240" height="138" loading="lazy" />
         <ul>
           <li><a href={PAGINAS.cardapio}>Cardápio</a></li>
           {insta && <li><a href={insta} target="_blank" rel="noopener">Instagram @{loja.instagram}</a></li>}

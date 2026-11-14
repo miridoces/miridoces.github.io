@@ -79,10 +79,10 @@ a { color: inherit; }
 .inicio h1 { font-size: clamp(36px, 5.6vw, 60px); max-width: 16ch; }
 .inicio__sub { font-size: clamp(18px, 2.2vw, 21px); max-width: 38ch; }
 .inicio__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-.inicio__simbolo { width: 100%; max-width: 420px; height: auto; justify-self: center; }
+.inicio__logo { width: 100%; max-width: 440px; height: auto; justify-self: center; }
 @media (max-width: 720px) {
   .inicio__in { grid-template-columns: minmax(0, 1fr); padding-top: 32px; }
-  .inicio__simbolo { order: -1; max-width: 220px; }
+  .inicio__logo { order: -1; max-width: 280px; }
 }
 
 /* Seções */
@@ -236,7 +236,7 @@ p.aviso {
 
 /* Sobre */
 .sobre { grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(24px, 6vw, 72px); }
-.sobre__simbolo { width: clamp(120px, 20vw, 200px); height: auto; }
+.sobre__logo { width: 240px; max-width: 100%; height: auto; }
 @media (max-width: 640px) { .sobre { grid-template-columns: minmax(0, 1fr); } }
 
 /* Como encomendar: passos numerados (é uma sequência de verdade) */
@@ -258,7 +258,7 @@ p.aviso {
   padding-left: var(--gutter); padding-right: max(16px, env(safe-area-inset-right, 0px));
   display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;
 }
-.rodape__in img { width: 170px; height: auto; }
+.rodape__in img { width: 240px; height: auto; }
 .rodape ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .rodape a { text-underline-offset: 3px; }
 .rodape small { margin-left: auto; font-size: 14px; opacity: .85; }

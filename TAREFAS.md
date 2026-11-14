@@ -1,7 +1,6 @@
 # Tarefas — MiriConfeitaria
 
 ## Em andamento
-- [ ] (Recomendado) Verificar o domínio nossodoceseu.com.br na organização do GitHub: miridoces > Settings > Pages > Add a domain (registro TXT no Registro.br) — protege o domínio contra uso por outra conta
 - [ ] Preencher conteúdo real do site: WhatsApp, cidade, produtos, preços e fotos — arquivos: `Site/src/conteudo/`, `Site/public/fotos/` — pronto quando: nenhum produto de EXEMPLO e `npm test` passando
 - [ ] Validar o guia da marca com a cliente (https://claude.ai/artifact/Cbipcc9ok8zimuxf6cQLgp) — arquivos: `ArteVisual/identidade/marca.md` — pronto quando: tom de voz e fotografia aprovados (hoje são proposta) e preenchidos diferencial, WhatsApp e hashtags
 - [ ] Confirmar com a cliente a grafia do nome em texto (usamos "Nosso Doce Seu")
@@ -37,6 +36,7 @@
 - [ ] Revisar com `design:accessibility-review` e `design:ux-copy` e apresentar à cliente pelo link do GitHub Pages — pronto quando: cliente aprovar
 
 ## Concluído
+- [x] Domínio nossodoceseu.com.br verificado na organização miridoces do GitHub (2026-11-14); manter o TXT `_github-pages-challenge-miridoces` na zona do Registro.br
 - [x] Domínio próprio no ar (2026-11-14): https://nossodoceseu.com.br com HTTPS; DNS no Registro.br (modo avançado, A/AAAA do GitHub Pages e `www` → miridoces.github.io); miridoces.github.io e www redirecionam
 - [x] Instagram novo @nosso.doce.seu no site e no guia; foto da casinha de biscoito de especiarias
 - [x] Cardápio com cartões padronizados (mesma altura; nome em 2 linhas, descrição em 3 e "Ver detalhes" com o texto completo)
