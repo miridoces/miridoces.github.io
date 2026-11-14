@@ -1,6 +1,6 @@
 import logo from '../../../ArteVisual/identidade/logo/web/principal-480.png'
 import logoCreme from '../../../ArteVisual/identidade/logo/web/principal-creme-480.png'
-import { formatarTelefone, linkEncomenda, linkInstagram } from '../lib/contato.js'
+import { linkEncomenda, linkInstagram } from '../lib/contato.js'
 import { PAGINAS } from '../lib/caminhos.js'
 
 export function Sobre({ Texto }) {
@@ -68,7 +68,6 @@ export function Encomendas({ dados, Texto, loja }) {
 
 export function Rodape({ loja }) {
   const insta = linkInstagram(loja)
-  const telefone = formatarTelefone(loja.whatsapp)
   return (
     <footer className="rodape">
       <div className="rodape__in">
@@ -76,13 +75,6 @@ export function Rodape({ loja }) {
         <ul>
           <li><a href={PAGINAS.cardapio}>Cardápio</a></li>
           {insta && <li><a href={insta} target="_blank" rel="noopener">Instagram @{loja.instagram}</a></li>}
-          {telefone && (
-            <li>
-              Encomendas por telefone ou WhatsApp:{' '}
-              <a href={`https://wa.me/${loja.whatsapp}`} target="_blank" rel="noopener">{telefone}</a>
-              {loja.responsavel && ` (${loja.responsavel})`}
-            </li>
-          )}
           {loja.cidade && <li>{loja.cidade}</li>}
         </ul>
         <small>© {new Date().getFullYear()} {loja.nome}. Feito à mão, sob encomenda.</small>

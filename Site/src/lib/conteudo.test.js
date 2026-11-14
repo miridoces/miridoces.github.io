@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { CATEGORIAS, arquivosDeProduto, dadosCategorias, dadosDestaques, dadosLoja, destaques, produtos, validarDestaques, validarLoja, validarProduto, validarRecados } from './conteudo.js'
-import { formatarTelefone, linkEncomenda } from './contato.js'
+import { linkEncomenda } from './contato.js'
 
 describe('conteúdo do site', () => {
   it('tem pelo menos um produto', () => {
@@ -79,13 +79,5 @@ describe('links de encomenda', () => {
 
   it('cai para o Instagram sem WhatsApp', () => {
     expect(linkEncomenda({ instagram: 'nosso.doce.seu' }).href).toBe('https://ig.me/m/nosso.doce.seu')
-  })
-})
-
-describe('telefone', () => {
-  it('formata o WhatsApp para mostrar na tela', () => {
-    expect(formatarTelefone('5531988683545')).toBe('(31) 98868-3545')
-    expect(formatarTelefone('551132654321')).toBe('(11) 3265-4321')
-    expect(formatarTelefone('')).toBeNull()
   })
 })
